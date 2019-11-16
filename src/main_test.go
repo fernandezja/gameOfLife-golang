@@ -84,3 +84,66 @@ func TestSetCellDiagonal(t *testing.T) {
 	}
 
 }
+
+func TestNeighborsCountTo1(t *testing.T) {
+	expected := 1
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+
+	got := NeighborsCount(neighborhood, 1, 1)
+
+	if expected != got {
+
+		t.Errorf("Neighbors Count [1][1] got '%d' expected '%d'", got, expected)
+	}
+
+}
+
+func TestNeighborsCountTo0(t *testing.T) {
+	expected := 0
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+
+	got := NeighborsCount(neighborhood, 2, 2)
+
+	if expected != got {
+
+		t.Errorf("Neighbors Count [2][2] got '%d' expected '%d'", got, expected)
+	}
+
+}
+
+func TestNeighborsCountTo2(t *testing.T) {
+	expected := 2
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+	SetCell(neighborhood, 0, 1)
+
+	got := NeighborsCount(neighborhood, 1, 1)
+
+	if expected != got {
+
+		t.Errorf("Neighbors Count [1][1] got '%d' expected '%d'", got, expected)
+	}
+
+}
+
+func TestNeighborsCountTo3(t *testing.T) {
+	expected := 3
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+	SetCell(neighborhood, 0, 1)
+	SetCell(neighborhood, 0, 2)
+
+	got := NeighborsCount(neighborhood, 1, 1)
+
+	if expected != got {
+
+		t.Errorf("Neighbors Count [1][1] got '%d' expected '%d'", got, expected)
+	}
+
+}
