@@ -35,3 +35,52 @@ func TestCreateNeighborhood9x9(t *testing.T) {
 		t.Errorf("Cell [8][8] got '%d' expected '%d'", got[2][2], expectedCeld88)
 	}
 }
+
+func TestSetCell1x1ToLife(t *testing.T) {
+	expected := 1
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+
+	got := neighborhood[0][0]
+	if expected != got {
+
+		t.Errorf("Cell [0][0] got '%d' expected '%d'", got, expected)
+	}
+
+	got2 := neighborhood[1][1]
+	if 0 != got2 {
+
+		t.Errorf("Cell [1][1] got '%d' expected '%d'", got2, 0)
+	}
+
+}
+
+func TestSetCellDiagonal(t *testing.T) {
+	expected := 1
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+	SetCell(neighborhood, 1, 1)
+	SetCell(neighborhood, 2, 2)
+
+	got0 := neighborhood[0][0]
+	got1 := neighborhood[0][0]
+	got2 := neighborhood[0][0]
+
+	if expected != got0 {
+
+		t.Errorf("Cell [0][0] got '%d' expected '%d'", got0, expected)
+	}
+
+	if expected != got1 {
+
+		t.Errorf("Cell [0][0] got '%d' expected '%d'", got1, expected)
+	}
+
+	if expected != got2 {
+
+		t.Errorf("Cell [0][0] got '%d' expected '%d'", got2, expected)
+	}
+
+}
