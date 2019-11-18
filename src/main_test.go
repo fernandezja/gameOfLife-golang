@@ -147,3 +147,96 @@ func TestNeighborsCountTo3(t *testing.T) {
 	}
 
 }
+
+func TestGrowUpCellWith2NeighborReturn0(t *testing.T) {
+	expected := 0
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+	SetCell(neighborhood, 0, 1)
+
+	SetCell(neighborhood, 1, 1)
+
+	got := GrowUpCell(neighborhood, 1, 1)
+
+	if expected != got {
+
+		t.Errorf("GrowUpCell [1][1] got '%d' expected '%d'", got, expected)
+	}
+
+}
+
+func TestGrowUpCellWith3NeighborReturn1(t *testing.T) {
+	expected := 1
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+	SetCell(neighborhood, 0, 1)
+	SetCell(neighborhood, 0, 2)
+
+	SetCell(neighborhood, 1, 1)
+
+	got := GrowUpCell(neighborhood, 1, 1)
+
+	if expected != got {
+
+		t.Errorf("GrowUpCell [1][1] got '%d' expected '%d'", got, expected)
+	}
+
+}
+
+func TestGrowUpCellWith4NeighborReturn0(t *testing.T) {
+	expected := 0
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+	SetCell(neighborhood, 0, 1)
+	SetCell(neighborhood, 0, 2)
+	SetCell(neighborhood, 1, 0)
+
+	SetCell(neighborhood, 1, 1)
+
+	got := GrowUpCell(neighborhood, 1, 1)
+
+	if expected != got {
+
+		t.Errorf("GrowUpCell [1][1] got '%d' expected '%d'", got, expected)
+	}
+
+}
+
+func TestGrowUpCellWith3NeighborReturn1Born(t *testing.T) {
+	expected := 1
+	neighborhood := CreateNeighborhood(3, 3)
+
+	SetCell(neighborhood, 0, 0)
+	SetCell(neighborhood, 0, 1)
+	SetCell(neighborhood, 0, 2)
+
+	got := GrowUpCell(neighborhood, 1, 1)
+
+	if expected != got {
+
+		t.Errorf("GrowUpCell [1][1] got '%d' expected '%d'", got, expected)
+	}
+
+}
+
+//func TestGrowUp(t *testing.T) {
+//	expected := 1
+//	neighborhood := CreateNeighborhood(3, 3)
+//
+//	SetCell(neighborhood, 0, 0)
+//	SetCell(neighborhood, 0, 1)
+//	SetCell(neighborhood, 0, 2)
+//
+//	GrowUp(neighborhood)
+//
+//	got := neighborhood[1][1]
+//
+//	if expected != got {
+//
+//		t.Errorf("GrowUp > cell [1][1] got '%d' expected '%d'", got, expected)
+//	}
+//
+//}

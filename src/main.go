@@ -73,6 +73,43 @@ func NeighborsCount(neighborhood [][]int, x, y int) int {
 	return neighbors
 }
 
+//func GrowUp(neighborhood [][]int) [][]int {
+//
+//	var new = CreateNeighborhood(len(neighborhood), len(neighborhood[0]))
+//
+//	for i := 0; i < len(neighborhood); i++ {
+//		for j := 0; j < len(neighborhood[i]); j++ {
+//
+//			new[i][j] = GrowUpCell(neighborhood[i][j])
+//
+//			//fmt.Printf("%d ", neighborhood[i][j])
+//		}
+//	}
+//
+//	return new
+//}
+
+func GrowUpCell(neighborhood [][]int, x, y int) int {
+
+	var actualValue = neighborhood[x][y]
+	var neighborsCount = NeighborsCount(neighborhood, x, y)
+
+	if actualValue == 1 {
+		switch {
+		case neighborsCount < 2:
+			return 0
+		case neighborsCount > 3:
+			return 0
+		case neighborsCount == 3:
+			return 1
+		}
+	} else if neighborsCount == 3 {
+		return 1
+	}
+
+	return 0
+}
+
 func print(s string, x [][]int) {
 	for i := 0; i < len(x); i++ {
 		for j := 0; j < len(x[i]); j++ {
