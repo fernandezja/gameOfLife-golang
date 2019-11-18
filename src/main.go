@@ -14,6 +14,7 @@ func main() {
 
 }
 
+//CreateNeighborhood is for create a new neighborhood with lifeless (empty) cells
 func CreateNeighborhood(x, y int) [][]int {
 
 	var neighborhood = make([][]int, x)
@@ -25,14 +26,17 @@ func CreateNeighborhood(x, y int) [][]int {
 	return neighborhood
 }
 
+//SetCell is for set life in a particular cell (useful for unit tests)
 func SetCell(neighborhood [][]int, x, y int) {
 	neighborhood[x][y] = 1
 }
 
+//GetCell is for Get the value of a particular cell
 func GetCell(neighborhood [][]int, x, y int) int {
 	return neighborhood[x][y]
 }
 
+//NeighborsCount is a neighbors counter (Simple... )
 func NeighborsCount(neighborhood [][]int, x, y int) int {
 
 	var neighbors = 0
@@ -73,6 +77,7 @@ func NeighborsCount(neighborhood [][]int, x, y int) int {
 	return neighbors
 }
 
+//GrowUp is for... GrowUp all neighborhood
 //func GrowUp(neighborhood [][]int) [][]int {
 //
 //	var new = CreateNeighborhood(len(neighborhood), len(neighborhood[0]))
@@ -89,6 +94,7 @@ func NeighborsCount(neighborhood [][]int, x, y int) int {
 //	return new
 //}
 
+//GrowUpCell is for makes a cell grow (depending on its neighbors)
 func GrowUpCell(neighborhood [][]int, x, y int) int {
 
 	var actualValue = neighborhood[x][y]
